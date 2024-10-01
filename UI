@@ -776,7 +776,7 @@ function Library:Create(TitleText)
 							BackgroundColor3 = Color3.fromRGB(206, 0, 3)
 						}):Play()
 						game.TweenService:Create(UIStroke_3, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-							Color = Color3.fromRGB(0, 255, 59) 
+							Color = Color3.fromRGB(206, 0, 3) 
 						}):Play()
 						local c = sample:Clone()
 						c.Parent = btn
