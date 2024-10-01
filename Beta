@@ -31,7 +31,7 @@ getgenv().TPWalk = false
 --// UI
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/UI"))();
-local Window = Library:Create("HAPPY HACK")
+local Window = Library:Create("🤣HAPPY | 😈ENGINE😈")
 
 local ToggleGui = Instance.new("ScreenGui")
 local Toggle = Instance.new("TextButton")
@@ -42,7 +42,7 @@ ToggleGui.Parent = game.CoreGui
 Toggle.Name = "Toggle"
 Toggle.Parent = ToggleGui
 Toggle.BackgroundColor3 = Color3.fromRGB(0, 98, 255)
-Toggle.BackgroundTransparency = 1
+Toggle.BackgroundTransparency = 0
 Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
 Toggle.Size = UDim2.new(0.0650164187, 0, 0.0888099447, 0)
 Toggle.Font = Enum.Font.SourceSans
@@ -111,7 +111,7 @@ HomeTab:Toggle("Enable: ", function(state)
 		end
 	end)
 end)
-HomeTab:TextBox("Aimbot", function(value)
+HomeTab:Toggle("Aimbot", function(value)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/aimbot", true))()
 end)
 
@@ -130,7 +130,10 @@ HomeTab:Keybind("Toggle UI", Enum.KeyCode.F, function()
     Library:ToggleUI()
 end)
 HomeTab:Keybind("Heal", Enum.KeyCode.G, function()
-    game.Players.LocalPlayer.Character.Humanoid.Health = (90)
+    game.Players.LocalPlayer.Character.Humanoid.Health = (100)
+end)
+HomeTab:TextBox("Health", function(number)
+    game.Players.LocalPlayer.Character.Humanoid.Health = (number)
 end)
 PlayerTab:TextBox("WalkSpeed", function(value)
     getgenv().Walkspeed = value
@@ -235,6 +238,7 @@ VisualTab:Toggle("Box", function(state)
     
 end)
 
+
 if game.PlaceId == 3082002798 then
     local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
 	GamesTab:InfoLabel("Game: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
@@ -272,14 +276,15 @@ end)
 ScriptTab:Button("Free cam", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/CameraSpy/main/Script", true))()
 end)
-
+ScriptTab:Button("invisible", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/invisible"))()
+end)
 TrollTab:Button("📌🔪 - Painel Fling// Op", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/CameraSpy/main/Script", true))()
 end)
 AnimationTab:Button("Zombie Animation", function()
     loadstring(game:HttpGet("https://pastefy.app/n42Ougzx/raw",true))()
 end)
-
 
 
 
