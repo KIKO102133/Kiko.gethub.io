@@ -210,7 +210,7 @@ function Library:Create(TitleText)
 
 	Navigation.Name = "Navigation"
 	Navigation.Parent = Main
-	Navigation.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+	Navigation.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
 	Navigation.BorderSizePixel = 0
 	Navigation.Position = UDim2.new(0, 0, 0, 30)
 	Navigation.Size = UDim2.new(0, 120, 1, -30)
