@@ -755,7 +755,7 @@ Options('ShowTeamColor', 'Show Team Color', false);
 Options('ShowName', 'Show Names', false);
 Options('ShowDistance', 'Show Distance', false);
 Options('ShowHealth', 'Show Health', false);
-Options('ShowBoxes', 'Show Boxes', false);
+--Options('ShowBoxes', 'Show Boxes', false);
 Options('ShowTracers', 'Show Tracers', false);
 Options('ShowDot', 'Show Head Dot', false);
 Options('VisCheck', 'Visibility Check', false);
