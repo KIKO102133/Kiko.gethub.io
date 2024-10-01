@@ -116,7 +116,7 @@ function Library:Create(TitleText)
 	Main.Name = "Main"
 	Main.Parent = UILibrary
 	Main.AnchorPoint = Vector2.new(0.5, 0.5)
-	Main.BackgroundColor3 = Color3.fromRGB(66, 0, 104)
+	Main.BackgroundColor3 = Color3.fromRGB(194, 0, 3)
 	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Main.Size = UDim2.new(0, 400, 0, 260)
 
