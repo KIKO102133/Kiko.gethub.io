@@ -1305,7 +1305,7 @@ function Library:Create(TitleText)
 
 			Label.Name = "Label"
 			Label.Parent = NewTab
-			Label.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+			Label.BackgroundColor3 = Color3.fromRGB(255, 221, 84)
 			Label.Size = UDim2.new(1, 0, 0, 26)
 
 			UIPadding_11.Parent = Label
