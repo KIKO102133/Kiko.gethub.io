@@ -116,19 +116,19 @@ function Library:Create(TitleText)
 	Main.Name = "Main"
 	Main.Parent = UILibrary
 	Main.AnchorPoint = Vector2.new(0.5, 0.5)
-	Main.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
+	Main.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Main.Size = UDim2.new(0, 400, 0, 285)
+	Main.Size = UDim2.new(0, 400, 0, 290)
 
-	UICorner.CornerRadius = UDim.new(0, 2)
+	UICorner.CornerRadius = UDim.new(0, 1)
 	UICorner.Parent = Main
 
 	TopBar.Name = "TopBar"
 	TopBar.Parent = Main
-	TopBar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	TopBar.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
 	TopBar.Size = UDim2.new(1, 0, 0, 30)
 
-	UICorner_2.CornerRadius = UDim.new(0, 6)
+	UICorner_2.CornerRadius = UDim.new(0, 1)
 	UICorner_2.Parent = TopBar
 
 	Extension.Name = "Extension"
@@ -203,7 +203,7 @@ function Library:Create(TitleText)
 	DropShadow.Size = UDim2.new(1, 44, 1, 44)
 	DropShadow.ZIndex = 0
 	DropShadow.Image = "rbxassetid://6015897843"
-	DropShadow.ImageColor3 = Color3.fromRGB(255, 0, 4)
+	DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 	DropShadow.ImageTransparency = 0.500
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
@@ -234,7 +234,7 @@ function Library:Create(TitleText)
 
 	ButtonHolder.Name = "ButtonHolder"
 	ButtonHolder.Parent = Navigation
-	ButtonHolder.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
+	ButtonHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	ButtonHolder.BackgroundTransparency = 1.000
 	ButtonHolder.Size = UDim2.new(1, 0, 1, 0)
 
@@ -256,7 +256,7 @@ function Library:Create(TitleText)
 	ContentContainer.Name = "ContentContainer"
 	ContentContainer.Parent = Main
 	ContentContainer.AnchorPoint = Vector2.new(1, 0)
-	ContentContainer.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
+	ContentContainer.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
 	ContentContainer.BackgroundTransparency = 1.000
 	ContentContainer.Position = UDim2.new(1, -6, 0, 36)
 	ContentContainer.Size = UDim2.new(1, -133, 1, -42)
@@ -298,7 +298,7 @@ function Library:Create(TitleText)
 		Active.BackgroundTransparency = 1
 		Active.BorderSizePixel = 0
 		Active.Size = UDim2.new(1, 0, 0, 28)
-		Active.Font = Enum.Font.CREEPSTER
+		Active.Font = Enum.Font.Press_Start_2P
 		Active.Text = TabText
 		Active.TextColor3 = Color3.fromRGB(199, 199, 199)
 		Active.TextSize = 12.000
@@ -1305,7 +1305,7 @@ function Library:Create(TitleText)
 
 			Label.Name = "Label"
 			Label.Parent = NewTab
-			Label.BackgroundColor3 = Color3.fromRGB(255, 221, 84)
+			Label.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
 			Label.Size = UDim2.new(1, 0, 0, 26)
 
 			UIPadding_11.Parent = Label
