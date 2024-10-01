@@ -118,14 +118,14 @@ function Library:Create(TitleText)
 	Main.AnchorPoint = Vector2.new(0.5, 0.5)
 	Main.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
 	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Main.Size = UDim2.new(0, 400, 0, 260)
+	Main.Size = UDim2.new(0, 400, 0, 285)
 
-	UICorner.CornerRadius = UDim.new(0, 6)
+	UICorner.CornerRadius = UDim.new(0, 2)
 	UICorner.Parent = Main
 
 	TopBar.Name = "TopBar"
 	TopBar.Parent = Main
-	TopBar.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+	TopBar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	TopBar.Size = UDim2.new(1, 0, 0, 30)
 
 	UICorner_2.CornerRadius = UDim.new(0, 6)
