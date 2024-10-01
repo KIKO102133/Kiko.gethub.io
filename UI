@@ -220,21 +220,21 @@ function Library:Create(TitleText)
 
 	Hide.Name = "Hide"
 	Hide.Parent = Navigation
-	Hide.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+	Hide.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
 	Hide.BorderSizePixel = 0
 	Hide.Size = UDim2.new(1, 0, 0, 20)
 
 	Hide2.Name = "Hide2"
 	Hide2.Parent = Navigation
 	Hide2.AnchorPoint = Vector2.new(1, 0)
-	Hide2.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+	Hide2.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
 	Hide2.BorderSizePixel = 0
 	Hide2.Position = UDim2.new(1, 0, 0, 0)
 	Hide2.Size = UDim2.new(0, 20, 1, 0)
 
 	ButtonHolder.Name = "ButtonHolder"
 	ButtonHolder.Parent = Navigation
-	ButtonHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonHolder.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
 	ButtonHolder.BackgroundTransparency = 1.000
 	ButtonHolder.Size = UDim2.new(1, 0, 1, 0)
 
@@ -256,7 +256,7 @@ function Library:Create(TitleText)
 	ContentContainer.Name = "ContentContainer"
 	ContentContainer.Parent = Main
 	ContentContainer.AnchorPoint = Vector2.new(1, 0)
-	ContentContainer.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+	ContentContainer.BackgroundColor3 = Color3.fromRGB(127, 0, 2)
 	ContentContainer.BackgroundTransparency = 1.000
 	ContentContainer.Position = UDim2.new(1, -6, 0, 36)
 	ContentContainer.Size = UDim2.new(1, -133, 1, -42)
