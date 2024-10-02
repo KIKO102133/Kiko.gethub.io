@@ -1,12 +1,4 @@
---[[
 
-Open source
-Made by !vcsk0#1516
-Credits to me
-
-Credits to the Owner Who Made The ESP Script
-
-]]
 local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
@@ -42,7 +34,7 @@ ToggleGui.Parent = game.CoreGui
 Toggle.Name = "Toggle"
 Toggle.Parent = ToggleGui
 Toggle.BackgroundColor3 = Color3.fromRGB(0, 98, 255)
-Toggle.BackgroundTransparency = 0
+Toggle.BackgroundTransparency = 1
 Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
 Toggle.Size = UDim2.new(0.0650164187, 0, 0.0888099447, 0)
 Toggle.Font = Enum.Font.SourceSans
@@ -58,13 +50,13 @@ Toggle.MouseButton1Click:connect(function()
     Library:ToggleUI()
 end)
 
-local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
-local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
-local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
-local ToolTab = Window:Tab("Tools","rbxassetid://138278296376047")
-local ScriptTab = Window:Tab("Script","rbxassetid://138025500944534")
-local AnimationTab = Window:Tab("Animation","rbxassetid://138025500944534")
-local TrollTab = Window:Tab("Troll","rbxassetid://138025500944534")
+local HomeTab = Window:Tab("Home |","rbxassetid://10888331510")
+local PlayerTab = Window:Tab("Players |","rbxassetid://12296135476")
+local VisualTab = Window:Tab("Visuals |","rbxassetid://12308581351")
+local ToolTab = Window:Tab("Tools |","rbxassetid://138278296376047")
+local ScriptTab = Window:Tab("Script |","rbxassetid://138025500944534")
+local AnimationTab = Window:Tab("Animation |","rbxassetid://138025500944534")
+local TrollTab = Window:Tab("Troll |","rbxassetid://138025500944534")
 -- HomeTab:InfoLabel("only works on some games!")
 
 HomeTab:Section("Settings")
@@ -111,7 +103,7 @@ HomeTab:Toggle("Enable: ", function(state)
 		end
 	end)
 end)
-HomeTab:Toggle("Aimbot", function(value)
+HomeTab:Button("Aimbot", function(value)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/aimbot", true))()
 end)
 
@@ -216,7 +208,12 @@ getgenv().InfJ = s
         end
     end)
 end)
-
+PlayerTab:Button("Resolution", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/Resolution",true))()
+end)
+PlayerTab:Button("Resolution Clear", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/Resolution%20Clear",true))()
+end)
 PlayerTab:Button("Rejoin", function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end)
@@ -235,7 +232,8 @@ getgenv().outlinetrans = 0.5 --Change outline transparency
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/Highlight-ESP.lua"))()
 end)
 VisualTab:Toggle("Box", function(state)
-    
+getgenv().enabled = toggle --Toggle on/off
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xenijo/Sleepy/refs/heads/main/Esp"))()
 end)
 
 
@@ -273,6 +271,9 @@ end)
 ScriptTab:Button("FPS Boost", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/FPS'),true))()
 end)
+ScriptTab:Button("RTX ON", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/RTX%20ON"))()
+end)
 ScriptTab:Button("Free cam", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/CameraSpy/main/Script", true))()
 end)
@@ -280,13 +281,14 @@ ScriptTab:Button("invisible", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/invisible"))()
 end)
 TrollTab:Button("📌🔪 - Painel Fling// Op", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/CameraSpy/main/Script", true))()
+    loadstring(game:HttpGet("", true))()
 end)
 AnimationTab:Button("Zombie Animation", function()
     loadstring(game:HttpGet("https://pastefy.app/n42Ougzx/raw",true))()
 end)
-
-
+ToolTab:Button("Fake HeadLess", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/Fake%20Headless",true))()
+end)
 
 
 
