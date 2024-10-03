@@ -1,0 +1,259 @@
+local UserInputService = game:GetService("UserInputService")
+local Player = game.Players.LocalPlayer
+
+local Settings = {
+	HideMobCtrl = true,
+	RainbowHue = true,
+	["Text"] = {
+		TextColorEnabled = false,
+		Font = "Code",
+		TextColor = Color3.fromRGB(0, 255, 0),
+	},
+}
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.CoreGui
+ScreenGui.Name = "Keystroke"
+ScreenGui.DisplayOrder = 9999
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+ScreenGui.IgnoreGuiInset = true
+
+function MakeDraggable(Instance)
+    local Dragging
+    local DragInput
+    local StartPosition
+    local StartMousePosition
+    
+    local function UpdateInput(input)
+        local delta = input.Position - StartMousePosition
+        Instance.Position = UDim2.new(StartPosition.X.Scale, StartPosition.X.Offset + delta.X, StartPosition.Y.Scale, StartPosition.Y.Offset + delta.Y)
+    end
+
+    Instance.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            Dragging = true
+            StartMousePosition = input.Position
+            StartPosition = Instance.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    Dragging = false
+                end
+            end)
+        end
+    end)
+    
+    Instance.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            DragInput = input
+        end
+    end)
+    
+    UserInputService.InputChanged:Connect(function(input)
+        if Dragging and input == DragInput then
+            UpdateInput(input)
+        end
+    end)
+end
+
+local MB1Count = 0
+local MB1Cps = 0
+local MB2Count = 0
+local MB2Cps = 0
+local LastClickTime = tick()
+
+local speed = 0.1
+local hue = 0
+
+local KeystrokeBackground = Instance.new("Frame")
+MakeDraggable(KeystrokeBackground)
+KeystrokeBackground.Size = UDim2.new(0, 200, 0, 220)
+KeystrokeBackground.Position = UDim2.new(0.5, -100, 0.5, -125)
+KeystrokeBackground.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+KeystrokeBackground.BorderSizePixel = 0
+KeystrokeBackground.Parent = ScreenGui
+KeystrokeBackground.BackgroundTransparency = 1
+
+local function RainbowText(label)
+    hue = (hue + speed * game:GetService("RunService").RenderStepped:Wait()) % 1
+    label.TextColor3 = Color3.fromHSV(hue, 1, 1)
+end
+
+local function CreateKeyLabel(keyName, size, position)
+    local Label = Instance.new("TextLabel")
+    Label.Name = keyName
+    Label.Size = size
+    Label.Position = position
+    Label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Label.BorderSizePixel = 0
+    Label.TextColor3 = Color3.new(1, 1, 1)
+    Label.TextSize = 24
+    Label.Font = Enum.Font[Settings.Text.Font]
+    Label.Text = keyName
+    Label.Parent = KeystrokeBackground
+    
+    return Label
+end
+
+local WKey = CreateKeyLabel("W", UDim2.new(0, 50, 0, 50), UDim2.new(0.5, -25, 0, 10))
+local AKey = CreateKeyLabel("A", UDim2.new(0, 50, 0, 50), UDim2.new(0, 10, 0, 70))
+local SKey = CreateKeyLabel("S", UDim2.new(0, 50, 0, 50), UDim2.new(0.5, -25, 0, 70))
+local DKey = CreateKeyLabel("D", UDim2.new(0, 50, 0, 50), UDim2.new(1, -60, 0, 70))
+local MB1 = CreateKeyLabel("MB1", UDim2.new(0, 90, 0, 40), UDim2.new(1, -190, 0, 125))
+local MB2 = CreateKeyLabel("MB2", UDim2.new(0, 90, 0, 40), UDim2.new(1, -100, 0, 125))
+local SpaceKey = CreateKeyLabel("-", UDim2.new(0, 180, 0, 40), UDim2.new(0, 10, 0, 170))
+
+local function UpdateLabelColor(label, isPressed)
+    if isPressed then
+        label.BackgroundColor3 = Color3.fromRGB(122, 122, 122)
+    else
+        label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    end
+end
+
+local function PlaySound(assetId, volume, parent)
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://3398620867" .. assetId
+    sound.Volume = volume
+    sound.Parent = parent
+    sound:Play()
+    
+    sound.Ended:Connect(function()
+        sound:Destroy()
+    end)
+end
+
+local function randomuselessid()
+    local character = Player.Character
+    local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        local velocity = humanoidRootPart.Velocity
+        local lookVector = humanoidRootPart.CFrame.LookVector
+
+        local forwardMovement = lookVector:Dot(velocity.Unit) > 0
+        local backwardMovement = lookVector:Dot(velocity.Unit) < 0
+        local movingForward = forwardMovement and math.abs(velocity.Z) > 2
+        local movingBackward = backwardMovement and math.abs(velocity.Z) > 2
+        local movingLeft = velocity.X < -2
+        local movingRight = velocity.X > 2
+
+        if movingForward then
+            UpdateLabelColor(WKey, true)
+            UpdateLabelColor(SKey, false)
+        elseif movingBackward then
+            UpdateLabelColor(SKey, true)
+            UpdateLabelColor(WKey, false)
+        else
+            UpdateLabelColor(WKey, false)
+            UpdateLabelColor(SKey, false)
+        end
+
+        if movingLeft then
+            UpdateLabelColor(AKey, true)
+            UpdateLabelColor(DKey, false)
+        elseif movingRight then
+            UpdateLabelColor(DKey, true)
+            UpdateLabelColor(AKey, false)
+        else
+            UpdateLabelColor(AKey, false)
+            UpdateLabelColor(DKey, false)
+        end
+    end
+end
+
+local function updatecps()
+    local currentTime = tick()
+    local elapsedTime = currentTime - LastClickTime
+
+    if elapsedTime >= 1 then
+        MB1Cps = math.floor(MB1Count / elapsedTime)
+        MB2Cps = math.floor(MB2Count / elapsedTime)
+        MB1Count = 0
+        MB2Count = 0
+        LastClickTime = currentTime
+    end
+end
+
+local function hidectrl()
+	local PlayerGui = Player:WaitForChild("PlayerGui")
+	local TouchGui = PlayerGui:FindFirstChild("TouchGui")
+	if TouchGui then
+	    local TouchControlFrame = TouchGui:WaitForChild("TouchControlFrame")    
+	    local function SetVisibilityForImageLabels(Frame, Visible)
+	        for _, Child in ipairs(Frame:GetDescendants()) do
+	            if Child:IsA("ImageLabel") then
+	                Child.Visible = Visible
+	            end
+	        end
+	    end    
+	    SetVisibilityForImageLabels(TouchControlFrame, false)    
+	    local JumpButton = TouchControlFrame:WaitForChild("JumpButton")
+	    if JumpButton then
+		    JumpButton.ImageTransparency = 0.999
+	    end
+	    local ThumbstickFrame = TouchControlFrame:FindFirstChild("ThumbstickFrame")
+	    if ThumbstickFrame then
+	        SetVisibilityForImageLabels(ThumbstickFrame, false)
+	    end    
+	    local DynamicThumbstickFrame = TouchControlFrame:FindFirstChild("DynamicThumbstickFrame")
+	    if DynamicThumbstickFrame then
+	        SetVisibilityForImageLabels(DynamicThumbstickFrame, false)
+	    end
+	else
+	end
+end
+
+local function load()
+    local isMB1Pressed = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1)
+    UpdateLabelColor(MB1, isMB1Pressed)
+    
+    if isMB1Pressed then
+        MB1Count = MB1Count + 1
+    end
+    
+    local isMB2Pressed = UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2)
+    UpdateLabelColor(MB2, isMB2Pressed)
+    
+    if isMB2Pressed then
+        MB2Count = MB2Count + 1
+    end
+    
+    local humanoid = Player.Character and Player.Character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        if humanoid:GetState() == Enum.HumanoidStateType.Jumping then
+            UpdateLabelColor(SpaceKey, true)
+        else
+            UpdateLabelColor(SpaceKey, false)
+        end
+    end
+end
+
+game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
+    randomuselessid();    
+    load();
+    updatecps();
+    
+    MB1.Text = string.format("%d", MB1Cps)
+    MB2.Text = string.format("%d", MB2Cps)
+
+    if Settings.HideMobCtrl then hidectrl() end
+    if Settings.RainbowHue then
+        RainbowText(WKey)
+        RainbowText(AKey)
+        RainbowText(SKey)
+        RainbowText(DKey)
+        RainbowText(MB1)
+        RainbowText(MB2)
+        RainbowText(SpaceKey)
+    end
+    if Settings.Text.TextColorEnabled then
+        local textColor = Settings.Text.TextColor
+        WKey.TextColor3 = textColor
+        AKey.TextColor3 = textColor
+        SKey.TextColor3 = textColor
+        DKey.TextColor3 = textColor
+        MB1.TextColor3 = textColor
+        MB2.TextColor3 = textColor
+        SpaceKey.TextColor3 = textColor
+    end
+end)
