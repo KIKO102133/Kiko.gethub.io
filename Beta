@@ -57,6 +57,7 @@ local ToolTab = Window:Tab("Tools |","rbxassetid://138278296376047")
 local ScriptTab = Window:Tab("Script |","rbxassetid://138025500944534")
 local AnimationTab = Window:Tab("Animation |","rbxassetid://138025500944534")
 local TrollTab = Window:Tab("Troll |","rbxassetid://138025500944534")
+local DTab = Window:Tab("Dahood Aim |","rbxassetid://138025500944534")
 -- HomeTab:InfoLabel("only works on some games!")
 
 HomeTab:Section("Settings")
@@ -189,17 +190,6 @@ PlayerTab:Slider("Fov", game.Workspace.CurrentCamera.FieldOfView,120, function(v
      game.Workspace.CurrentCamera.FieldOfView = v
 end)
 
-PlayerTab:Toggle("Noclip", function(s)
-    getgenv().Noclip = s
-    game:GetService("RunService").Heartbeat:Connect(function()
-        if Noclip == true then
-            game:GetService("RunService").Stepped:wait()
-            game.Players.LocalPlayer.Character.Head.CanCollide = false
-            game.Players.LocalPlayer.Character.Torso.CanCollide = false
-        end
-    end)
-end)
-
 PlayerTab:Toggle("Infinite Jump", function(s)
 getgenv().InfJ = s
     game:GetService("UserInputService").JumpRequest:connect(function()
@@ -235,6 +225,10 @@ VisualTab:Toggle("Box", function(state)
 getgenv().enabled = toggle --Toggle on/off
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Xenijo/Sleepy/refs/heads/main/Esp"))()
 end)
+VisualTab:Toggle("slow Keyboard", function(state)
+    getgenv().enabled = toggle --Toggle on/off
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/Keyboard"))()
+    end)
 
 
 if game.PlaceId == 3082002798 then
@@ -288,6 +282,12 @@ AnimationTab:Button("Zombie Animation", function()
 end)
 ToolTab:Button("Fake HeadLess", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/Fake%20Headless",true))()
+end)
+DTab:Button("Dahood Aim", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/Aimbot%20%2B%20slientaim%20%2B%20esp.lua",true))()
+end)
+DTab:Button("Slient Aim", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KIKO102133/Kiko.gethub.io/refs/heads/main/sli",true))()
 end)
 
 
